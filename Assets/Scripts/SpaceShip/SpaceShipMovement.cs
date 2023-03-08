@@ -21,10 +21,6 @@ public class SpaceShipMovement : MonoBehaviour
     private Vector3 currentVelocity;
 
 
-    [Header("Controle de particulas")]
-    [SerializeField] private new ParticleSystem particleSystem;
-    [SerializeField] private Vector3 direction = new(5, -2, .5f); 
-
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -47,28 +43,6 @@ public class SpaceShipMovement : MonoBehaviour
         targetPosition.y = Mathf.Clamp(targetPosition.y, -screenLimity, screenLimity);
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
-     
-        ParticleControl(input.y);
-    }
-
-    /// <summary>
-    /// Determina a direção que as particulas sera direcionadas conforme o eixo y da nave
-    /// </summary>
-    private void ParticleControl(float y)
-    {
-        var mainModule = particleSystem.main;
-        if (y > 0)
-        {
-            mainModule.startSpeed = direction.x;
-        }
-        else if (y < 0)
-        {
-            mainModule.startSpeed = direction.y;
-        }
-        else
-        {
-            mainModule.startSpeed = direction.z;
-        }
     }
 
 }

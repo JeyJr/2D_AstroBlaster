@@ -17,6 +17,8 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     private float delayToDisable = 1f;
     private bool enableToMove = false;
 
+    [SerializeField] private float damage = 1;
+
     public void SetPoolReference(IBackToPool poolReference)
     {
         backToPool = poolReference;
@@ -37,18 +39,32 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     {
         if (enableToMove)
         {
-            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime); 
+            transform.Translate(moveSpeed * Time.deltaTime * transform.up); 
         }
     }
 
+
+    /// <summary>
+    /// Vai voltar pra pool quando colidir com qualquer obj
+    /// Vai dar dano caso o objeto tenha a inteface ILifeControl
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            //Tentar dar dano reconhecendo a interface
+            if (collision.gameObject.TryGetComponent<ILifeControl>(out var lifeControl))
+            {
+                lifeControl.LooseLife(damage);
+            }
+
+            BackToPool();
+        }
+        else
+        {
             BackToPool();
         }
     }
+
 
     private void BackToPool()
     {
