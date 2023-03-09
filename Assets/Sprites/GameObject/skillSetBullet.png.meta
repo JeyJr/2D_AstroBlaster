@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be5d18c53d67fd445877c7823ce3445f
+guid: 8b81f8852cf19284b9456d244064ae28
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skillIConP1_0
+      name: skillSetBullet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 152
-        height: 152
+        width: 151
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebf6aa68dde628c4684daba7c98791c9
-      internalID: -918382087
+      spriteID: 14357aede5073df4a94858683c041019
+      internalID: 1084442570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skillIConP1_1
+      name: skillSetBullet_1
       rect:
         serializedVersion: 2
-        x: 189
+        x: 168
         y: 0
-        width: 152
-        height: 152
+        width: 151
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20e2932af8a9a1047b3555af1523f866
-      internalID: 1821034559
+      spriteID: 73e520dc6c3573c48bcd123dc2c7cbdd
+      internalID: 85695601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skillIConP1_2
+      name: skillSetBullet_2
       rect:
         serializedVersion: 2
-        x: 380
+        x: 336
         y: 0
-        width: 152
-        height: 152
+        width: 151
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6766fc9d31ff21248a17f20102440511
-      internalID: -440753651
+      spriteID: e24ee708203f1f34580e64d8c13f3d07
+      internalID: -1731953071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skillIConP1_3
+      name: skillSetBullet_3
       rect:
         serializedVersion: 2
-        x: 581
+        x: 503
         y: 0
-        width: 152
-        height: 152
+        width: 151
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44263aa798fc31e42a7af02d601ff2d6
-      internalID: 162757945
+      spriteID: 970f0b19248aaf646bd923fd571b83cf
+      internalID: 507829212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skillIConP1_4
+      name: skillSetBullet_4
       rect:
         serializedVersion: 2
-        x: 765
+        x: 671
         y: 0
-        width: 153
-        height: 152
+        width: 151
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,8 +227,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52bbfee570248304d8d709e4b9f2097b
-      internalID: 122382940
+      spriteID: 97bfba050637d464aafcaf53e7a32e80
+      internalID: -683594287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skillSetBullet_5
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 0
+        width: 151
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85585d3d6264dd4c92c24e0932ce080
+      internalID: -1259707397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skillSetBullet_6
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 0
+        width: 151
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8626756deb8ba24fbef05af710472a6
+      internalID: 1134146
       vertices: []
       indices: 
       edges: []
@@ -244,11 +286,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      skillIConP1_2: -440753651
-      skillIConP1_4: 122382940
-      skillIConP1_1: 1821034559
-      skillIConP1_3: 162757945
-      skillIConP1_0: -918382087
+      skillSetBullet_1: 85695601
+      skillSetBullet_0: 1084442570
+      skillSetBullet_5: -1259707397
+      skillSetBullet_2: -1731953071
+      skillSetBullet_6: 1134146
+      skillSetBullet_3: 507829212
+      skillSetBullet_4: -683594287
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

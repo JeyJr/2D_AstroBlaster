@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,9 @@ using UnityEngine.Events;
 public class AsteroidPiecesPool : MonoBehaviour
 {
     [SerializeField] private List<GameObject> prefabs;
-    [SerializeField] private Transform spawnPosition;
-    private float force = 1f;
+
+    [SerializeField] private float x = 2.5f;
+    [SerializeField] private float y = 1f;
 
     [SerializeField] private UnityEvent AfterSpawnPieces;
 
@@ -31,32 +33,24 @@ public class AsteroidPiecesPool : MonoBehaviour
     IEnumerator Spawn()
     {
         yield return null;
-
         for (int i = 0; i < prefabs.Count; i++)
         {
-            var obj = Instantiate(prefabs[i], spawnPosition.transform.position, Quaternion.identity);
-            obj.transform.position = NewPosition();
+            var obj = Instantiate(prefabs[i], transform.position, Quaternion.identity);
+            obj.transform.position = Position();
+
+            obj.GetComponent<ILifeControl>().SetLifeValue(life);
+            obj.GetComponent<IUpdateTextLife>().UpdateTextLife();
             obj.SetActive(true);
-
-            if (obj.TryGetComponent<ILifeControl>(out var lifeControl))
-            {
-                lifeControl.SetLifeValue(life);
-            }
-
-            if (obj.TryGetComponent<IUpdateTextLife>(out var updateTextLife))
-            {
-                updateTextLife.UpdateTextLife();
-            }
         }
 
         AfterSpawnPieces.Invoke();
     }
 
 
-    private Vector3 NewPosition()
+    private Vector3 Position()
     {
-        float x = Random.Range(spawnPosition.transform.position.x, spawnPosition.transform.position.x) * force;
-        float y = Random.Range(spawnPosition.transform.position.x, spawnPosition.transform.position.x) * force;
+        float x = Random.Range(transform.position.x - this.x, transform.position.x + this.x);
+        float y = Random.Range(transform.position.y - this.y, transform.position.y + this.y);
 
         return new Vector3(x, y, 2);
     }

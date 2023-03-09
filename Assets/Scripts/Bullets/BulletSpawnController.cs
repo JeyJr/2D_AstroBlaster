@@ -44,7 +44,7 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
     [Space(5)]
     [Header("Bullet Pool")]
     [SerializeField] private List<GameObject> prefabs; //Tipos de bulets disponiveis para uso
-    private List<GameObject> bullets= new(); //Pool
+    private List<GameObject> bulletsPool= new(); //Pool
 
     public bool enableToSpawn; //ENABLE SERA MODIFICADO POR ALGUM EVENTO DO GAMESTATE
 
@@ -74,7 +74,7 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
                 poolReference.SetPoolReference(this);
             }
 
-            bullets.Add(obj);
+            bulletsPool.Add(obj);
         }
     }
 
@@ -84,17 +84,21 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
         {
             yield return null;
 
-            if (enableToSpawn && bullets.Count > positionList.Count)
+            if (enableToSpawn && bulletsPool.Count > positionList.Count)
             {
+                delayToSpawn = GameData.GetInstance().GetDelayToSpawnBullet();
+
                 yield return new WaitForSeconds(delayToSpawn);
 
                 for (int i = 0; i < spawnPosition.Count; i++)
                 {
-                    GameObject obj = bullets.Find(obj => !obj.activeSelf);
+                    GameObject obj = bulletsPool.Find(obj => !obj.activeSelf);
 
-                    obj.SetActive(true);
-                    obj.transform.position = spawnPosition[i].position;
-                    obj.transform.rotation = spawnPosition[i].localRotation;
+                    if(obj!= null)
+                    {
+                        obj.SetActive(true);
+                        obj.transform.SetPositionAndRotation(spawnPosition[i].position, spawnPosition[i].localRotation);
+                    }
                 }
             }
         }
@@ -102,7 +106,7 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
 
     public void BackToPool(GameObject obj)
     {
-        GameObject bullet = bullets.Find(gameObject => gameObject == obj);
+        GameObject bullet = bulletsPool.Find(gameObject => gameObject == obj);
 
         if(bullet != null)
         {
@@ -148,7 +152,7 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
         }
     }
 
-
+    //BulletSetup----------
 
     /// <summary>
     /// Spawna bullets de uma unica posição: pCentral
@@ -305,5 +309,7 @@ public class BulletSpawnController : MonoBehaviour, IBackToPool, ISetBulletSetup
         spawnPosition.Add(pLeftTwo);
         spawnPosition.Add(pRightTwo);
     }
+
+
 
 }

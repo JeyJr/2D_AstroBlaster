@@ -125,6 +125,9 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
             Vector3 pos = transform.position;
             pos.z = 0;
             Instantiate(explosionPrefab, pos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+
+            var obj = FindObjectOfType<GameController>();
+            obj.AddPoint();
         }
     }
    

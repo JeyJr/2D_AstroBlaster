@@ -177,7 +177,8 @@ MonoBehaviour:
   - {fileID: 6938456238158619301, guid: ed6571e09112ec940b3ae9ef8d64f7d4, type: 3}
   - {fileID: 6938456238158619301, guid: ed6571e09112ec940b3ae9ef8d64f7d4, type: 3}
   - {fileID: 6938456238158619301, guid: ed6571e09112ec940b3ae9ef8d64f7d4, type: 3}
-  spawnPosition: {fileID: 8188987019018530873}
+  x: 2.5
+  y: 2.5
   AfterSpawnPieces:
     m_PersistentCalls:
       m_Calls:

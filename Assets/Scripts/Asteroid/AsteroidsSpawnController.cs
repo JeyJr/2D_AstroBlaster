@@ -32,7 +32,7 @@ public class AsteroidsSpawnController: MonoBehaviour, IBackToPool
 
             if (index > prefabs.Count - 1) index = 0;
 
-            var obj = Instantiate(prefabs[index]);
+            var obj = Instantiate(prefabs[index], transform);
             obj.SetActive(false);
 
             if (obj.TryGetComponent<ISetPoolReference>(out var poolReference))

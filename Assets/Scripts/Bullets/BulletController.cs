@@ -13,11 +13,8 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     private IBackToPool backToPool;
 
     [Tooltip("Controle de movimentação da bullet")]
-    private float moveSpeed = 20;
-    private float delayToDisable = 1f;
+    private float moveSpeed = 0;
     private bool enableToMove = false;
-
-    [SerializeField] private float damage = 1;
 
     public void SetPoolReference(IBackToPool poolReference)
     {
@@ -27,12 +24,7 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     private void OnEnable()
     {
         enableToMove = true;
-        StartCoroutine(DisableBullet());
-    }
-    IEnumerator DisableBullet()
-    {
-        yield return new WaitForSeconds(delayToDisable);
-        BackToPool();
+        moveSpeed = GameData.GetInstance().GetMoveSpeed();
     }
 
     private void Update()
@@ -54,6 +46,7 @@ public class BulletController : MonoBehaviour, ISetPoolReference
         {
             if (collision.gameObject.TryGetComponent<ILifeControl>(out var lifeControl))
             {
+                float damage = GameData.GetInstance().GetDamage();
                 lifeControl.LooseLife(damage);
             }
 

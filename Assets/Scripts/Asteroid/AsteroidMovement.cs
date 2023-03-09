@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Controla a movimentação do objeto quando habilitado na cena
@@ -11,6 +12,7 @@ public class AsteroidMovement : MonoBehaviour
     private void OnEnable()
     {
         enableToMove = true;
+        
     }
 
     private void OnDisable()
@@ -25,5 +27,7 @@ public class AsteroidMovement : MonoBehaviour
             transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
         }
     }
+
+
 
 }
