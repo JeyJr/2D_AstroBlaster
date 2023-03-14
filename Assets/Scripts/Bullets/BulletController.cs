@@ -20,11 +20,10 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     {
         backToPool = poolReference;
     }
-
     private void OnEnable()
     {
         enableToMove = true;
-        moveSpeed = GameData.GetInstance().GetMoveSpeed();
+        moveSpeed = GameData.GetInstance().GetBulletMoveSpeed();
     }
 
     private void Update()
@@ -35,7 +34,6 @@ public class BulletController : MonoBehaviour, ISetPoolReference
         }
     }
 
-
     /// <summary>
     /// Vai voltar pra pool quando colidir com qualquer obj
     /// Vai dar dano caso o objeto tenha a inteface ILifeControl
@@ -44,9 +42,9 @@ public class BulletController : MonoBehaviour, ISetPoolReference
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.TryGetComponent<ILifeControl>(out var lifeControl))
+            if (collision.gameObject.TryGetComponent<IAsteroidLifeControl>(out var lifeControl))
             {
-                float damage = GameData.GetInstance().GetDamage();
+                float damage = GameData.GetInstance().GetBulletDamage();
                 lifeControl.LooseLife(damage);
             }
 
@@ -57,7 +55,6 @@ public class BulletController : MonoBehaviour, ISetPoolReference
             BackToPool();
         }
     }
-
 
     private void BackToPool()
     {

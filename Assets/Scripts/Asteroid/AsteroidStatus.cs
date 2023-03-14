@@ -7,12 +7,13 @@ using UnityEngine.Events;
 /// <summary>
 /// Classe responsavel por controlar o sistema de vida e morte, instanciar pedaços e voltar para pool
 /// </summary>
-public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IUpdateTextLife
+public class AsteroidStatus : MonoBehaviour, IAsteroidLifeControl, ISetPoolReference, IUpdateCanvasLife
 {
     [SerializeField] private float maxLife;
     [SerializeField] private float life;
 
     [SerializeField] private TextMeshProUGUI txtLife;
+
 
     private IBackToPool myPool;
     public void SetPoolReference(IBackToPool poolReference)
@@ -37,12 +38,12 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
 
     private void Awake()
     {
-        UpdateTextLife();
+        UpdateLife();
     }
 
     private void OnEnable()
     {
-        UpdateTextLife();
+        UpdateLife();
     }
 
 
@@ -75,7 +76,7 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
         life -= damage;
         OnTakeDamage.Invoke();
 
-        if (life <= 0)
+        if (life < 1)
         {
             OnDestroyed.Invoke();
         }
@@ -90,7 +91,11 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Dar dano no player");
+            //Player perde vida, atualiza o sliderLife e asteroid é destruido
+            GameData.GetInstance().DecreasePlayerLife();
+            collision.gameObject.GetComponent<IUpdateCanvasLife>().UpdateLife();
+
+            LooseLife(life);
         }
 
         if (collision.gameObject.CompareTag("Ground"))
@@ -110,7 +115,7 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
 
     }
 
-    public void UpdateTextLife()
+    public void UpdateLife()
     {
         txtLife.text = life.ToString("F0");
     }
@@ -126,8 +131,7 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
             pos.z = 0;
             Instantiate(explosionPrefab, pos, Quaternion.Euler(0, 0, Random.Range(0, 360)));
 
-            var obj = FindObjectOfType<GameController>();
-            obj.AddPoint();
+            GameEvents.GetInstance().AddPoint();
         }
     }
    
@@ -142,11 +146,6 @@ public class AsteroidStatus : MonoBehaviour, ILifeControl, ISetPoolReference, IU
         }
     }
 
-    public void DestroyGameObject()
-    {
-        Destroy(gameObject);
-        
-    }
 
     public void CameraStandardShake()
     {
