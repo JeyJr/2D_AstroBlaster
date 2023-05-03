@@ -1,6 +1,7 @@
-# # AstroBlaster - MOBILE
+# AstroBlaster
 
-## Projeto desenvolvido na Unity - Versão: 2021.3.11f1.
+[![Unity Version](https://img.shields.io/badge/Unity-2021.3.11f1-blue.svg)](https://unity.com/) 
+![Platform](https://img.shields.io/badge/platform-Android-green.svg)
 
 Não é necessário ter a mesma versão da Unity para abrir o projeto, mas é recomendado que você tenha instalado a versão mais recente disponível.
 
