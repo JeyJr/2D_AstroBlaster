@@ -7,7 +7,6 @@ Não é necessário ter a mesma versão da Unity para abrir o projeto, mas é re
 **Link para jogar no ANDROID:** <br>
 https://play.google.com/store/apps/details?id=com.JeyJuniorGames.AstroBlaster
 
-obs: Caso não consigo acessar o projeto na playstore, significa que o projeto não está em produção.
 
 
 ![GamePlay](https://imgs-projetos-jeyjr.netlify.app/gamesunity/astroblaster/GamePlay_003.png)
