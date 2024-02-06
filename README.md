@@ -10,8 +10,7 @@ https://play.google.com/store/apps/details?id=com.JeyJuniorGames.AstroBlaster
 
 
 
-![GamePlay](https://imgs-projetos-jeyjr.netlify.app/gamesunity/astroblaster/GamePlay_003.png)
-
+![GamePlay](https://imgs-projetos-jeyjr.netlify.app/imgs/Unity_AstroBlaster/principal.png)
 
 ---
 
@@ -38,9 +37,6 @@ https://github.com/JeyJr/2D_AstroBlaster/tree/main/Assets/Scenes
 
 
 Em seguida, clique duas vezes no arquivo e selecione a versão da Unity desejada para carregar o projeto. Todos os arquivos de base da Unity serão implementados automaticamente.
-
-
-![Unity](https://imgs-projetos-jeyjr.netlify.app/gamesunity/astroblaster/Unity_002.png)
 
 ---
 ## Uso:
